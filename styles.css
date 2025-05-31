@@ -64,6 +64,15 @@ main {
     align-items: center;
 }
 
+.counter 
+{
+    width: 30%;
+    height: 50px;
+    border-radius: 2px;
+    background-color: rgb(164, 189, 252);
+    margin-bottom: 10px;
+}
+
 .page {
     width: 100%;
     border: 1px solid black;
