@@ -1,6 +1,6 @@
 # 🌐 Cloud Resume Challenge - Chunk 2
 
-This part of the challenge focuses on building a professional resume using **HTML and CSS**, and deploying it as a **static website on Azure**, secured with **Cloudflare-provided SSL**.
+This part of the challenge focuses on building a professional resume using **HTML, CSS**, and **JavaScript**, and deploying it as a **static website on Azure**, secured with **Cloudflare-provided SSL**.
 
 🔗 **GitHub Repository**: [AmishGoel1/CloudResumeChallengeAzure](https://github.com/AmishGoel1/CloudResumeChallengeAzure)
 
@@ -8,66 +8,65 @@ This part of the challenge focuses on building a professional resume using **HTM
 
 ## 📄 Step 1: HTML Resume
 
-- Created `index.html` using **semantic HTML tags** such as `<main>`, `<section>`, and `<article>`.
-- Structure mimics a two-page Word document using two main `<div>` containers styled with borders, white background, and shadow effects.
-- Each resume section (e.g., Skills, Education, Experience) is separated semantically for readability and accessibility.
+- Created `index.html` using **semantic HTML tags** like `<main>`, `<section>`, and `<article>`.
+- Structured to mimic a two-page Word document using two main `<div>` containers styled with borders, white background, and shadow effects.
 
 ---
 
 ## 🎨 Step 2: CSS Styling
 
-- Used **Meyerweb CSS reset** for clean, predictable styling across browsers.
-- Applied **Flexbox** for layout alignment and page-like content positioning.
-- Added subtle styling to simulate Word document feel: bordered divs, shadows, and white backgrounds.
+- Used **Meyerweb CSS reset** for consistent styling across browsers.
+- Flexbox used for layout alignment and page-like content positioning.
+- Subtle styling to mimic Word document: bordered divs, shadows, and white backgrounds.
 
 ---
 
 ## ☁️ Step 3: Hosting on Azure Static Website
 
 - Created an **Azure Storage Account**.
-- Enabled **Static Website** hosting, which generated the `$web` container.
-- Uploaded `index.html` and `style.css` via the Azure Portal GUI.
-- Azure serves the site at a static web endpoint:  
+- Enabled **Static Website** hosting and uploaded the `index.html` and `style.css`.
+- Live site hosted at:  
   🔹 `https://amishazurecloudchallenge.z5.web.core.windows.net`
 
 ---
 
 ## 🌍 Step 4: Custom Domain + SSL with Cloudflare
 
-Initially, the custom domain (`come.workwithamish.me`) was mapped to the **blob endpoint**, but this caused:
+- Mapped custom domain `come.workwithamish.me` to the static web endpoint.
+- Configured Cloudflare DNS and SSL to secure HTTPS traffic.
 
-- Query parameter errors at the root path (`/`)
-- No valid SSL certificate for HTTPS
-
-To fix this:
-- Changed domain nameservers to **Cloudflare** (from Namecheap)
-- Pointed DNS to the **Azure Static Website endpoint** instead of the blob storage endpoint
-- Enabled **Cloudflare proxying** which:
-  - Automatically issued a valid SSL certificate
-  - Enforced HTTPS and TLS 1.2+ via **Edge Certificate settings**
-
-### ✅ Final Live Site:
+✅ Final Live Site:  
 🌐 [https://come.workwithamish.me](https://come.workwithamish.me)
 
 ---
 
-## 📌 Skills Demonstrated
+## 🖥️ Step 5: Adding JavaScript Interactivity
 
-- Semantic HTML and structured resume layout
-- CSS styling with reset and Flexbox for layout
-- Azure Static Website deployment using Storage Accounts
-- DNS management using DigitalOcean and Cloudflare
-- SSL setup and HTTPS enforcement without Azure CDN
+- Added a **visitor counter** using JavaScript and an Azure Function API.
+- Fixed **CORS errors** by updating Azure Function’s CORS settings to allow `*`.
+- Centered `<p>` inside `<div>` with CSS and updated the number dynamically.
 
 ---
 
-## 💡 Next Iteration Ideas
+## ✅ Next Steps
 
-- Add JavaScript for interactivity or dynamic data (e.g., hit counter via Azure Functions)
-- Improve accessibility and keyboard navigation
-- Convert to SPA using a lightweight JS framework (e.g., React or Svelte)
-- Add animations or print-friendly PDF export option
+11. **Tests**  
+- Include tests for the **Python API** code using frameworks like **pytest**.
+
+12. **Infrastructure as Code**  
+- Define the **Azure Function** and **CosmosDB table** in an **ARM template** (Consumption plan) instead of manual Azure console configurations.
+
+14. **CI/CD (Back end)**  
+- Set up **GitHub Actions** to:  
+  - Run Python tests on every push.  
+  - If tests pass, deploy the ARM template and Python code to Azure.
+
+15. **CI/CD (Front end)**  
+- Create a second **GitHub repository** for the website code.  
+- Use **GitHub Actions** to deploy updates to the Azure Static Website container automatically.  
+- (Optional) Purge the Azure CDN endpoint in the workflow.  
+- **Important:** Do not commit **Azure credentials** to source control – use secrets or environment variables!
 
 ---
 
-> This project is part of the [Cloud Resume Challenge](https://cloudresumechallenge.dev/), a practical hands-on initiative to strengthen cloud, web, and DevOps skills.
+> This project is part of the [Cloud Resume Challenge](https://cloudresumechallenge.dev/), a practical, hands-on initiative to strengthen cloud, web, and DevOps skills.
