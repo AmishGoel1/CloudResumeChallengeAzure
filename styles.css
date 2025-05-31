@@ -71,6 +71,9 @@ main {
     border-radius: 2px;
     background-color: rgb(164, 189, 252);
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .page {
