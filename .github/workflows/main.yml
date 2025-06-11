@@ -19,6 +19,6 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlinescript: |
-            az storage blob upload --connection-string "$azure_connection_string" -c '$web' -f ./index.html --overwrite=True --output none
+            az storage blob upload --connection-string "$azure_connection_string" -c '$web' -f ./index.html --overwrite true --output none
             
       
