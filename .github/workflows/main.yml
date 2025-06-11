@@ -13,10 +13,12 @@ jobs:
         uses: actions/checkout@v4
         
       - name: upload files to web container
+        env: 
+          azure_connection_string: ${{ secrets.STORAGE_ACCOUNT_CONNECTION_STRING }}
         uses: azure/cli@v2
         with:
           azcliversion: 2.30.0
           inlinescript: |
-            az storage blob upload --conection-string ${{ secrets.STORAGE_ACCOUNT_CONNECTION_STRING }} --container-name $web -f ./index.html --overwrite true --output none
+            az storage blob upload --conection-string "$azure_connection_string" -c '$web' -f ./index.html --overwrite --output none
             
       
