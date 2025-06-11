@@ -1,0 +1,22 @@
+name: Upload static files to $web container
+
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        
+      - name: upload files to web container
+        uses: azure/cli@v2
+        with:
+          azcliversion: 2.30.0
+          inlinescript: |
+            az storage blob upload --conection-string ${{ secrets.STORAGE_ACCOUNT_CONNECTION_STRING }} --container-name $web -f ./index.html --overwrite true --output none
+            
+      
