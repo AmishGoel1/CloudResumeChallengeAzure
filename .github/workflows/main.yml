@@ -20,5 +20,7 @@ jobs:
           azcliversion: 2.74.0
           inlinescript: |
             az storage blob upload --connection-string "$azure_connection_string" -c '$web' -f ./index.html --overwrite --output none
+            az storage blob upload --connection-string "$azure_connection_string" -c '$web' -f ./style.css --overwrite --output none
+            az storage blob upload --connection-string "$azure_connection_string" -c '$web' -f ./script.js --overwrite --output none
             
       
